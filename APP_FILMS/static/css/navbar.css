@@ -7,15 +7,9 @@ nav {
 }
 
 nav .container {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: space-between;
+  align-items: center;
   padding: 15px 10%;
   width: 100%;
   background-color: white;
@@ -37,12 +31,10 @@ nav .container .nav-links li {
 nav .container .nav-links li a {
   color: #b81d3a;
   text-decoration: none;
-  -webkit-transition: ease-out 0.2s;
   transition: ease-out 0.2s;
 }
 
 nav .container .nav-links li a:hover {
-  -webkit-transition: ease-in 0.2s;
   transition: ease-in 0.2s;
   color: #5b1a1a;
 }
@@ -56,12 +48,10 @@ nav .container .account-button button {
   width: 190px;
   border: 2px solid #b81d3a;
   border-radius: 8px;
-  -webkit-transition: ease-out 0.2s;
   transition: ease-out 0.2s;
 }
 
 nav .container .account-button button:hover {
-  -webkit-transition: ease-in 0.2s;
   transition: ease-in 0.2s;
   color: white;
   border-color: #5b1a1a;

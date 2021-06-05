@@ -43,8 +43,21 @@ def newindex():
 """
 
 
-@obj_mon_application.route("/register")
+@obj_mon_application.route("/register", methods=['GET, POST'])
 def register():
+    
+    if request.method == "POST":
+        try:
+            try:
+                MaBaseDeDonnee().connexion_bd.ping(False)
+            except Exception as erreur:
+                flash(f"Dans Gestion personne ...terrible erreur, il faut connecter une base de donnée", "danger")
+                print(f"Exception grave Classe constructeur GestionPersonnes {erreur.args[0]}")
+                raise MaBdErreurConnexion(f"{msg_erreurs['ErreurConnexionBD']['message']} {erreur.args[0]}")
+
+            with MaBaseDeDonnee().connexion_bd.cursor() as mc_register:
+
+
     return render_template("account/register.html")
 
 
