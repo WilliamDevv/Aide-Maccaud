@@ -266,7 +266,7 @@ def pseudo_update_wtf():
 
 @obj_mon_application.route("/pseudo_delete", methods=['GET', 'POST'])
 def pseudo_delete_wtf():
-    data_pseudo_avoir_personne_delete = None
+    #data_pseudo_avoir_personne_delete = None
     btn_submit_del = None
     # L'utilisateur vient de cliquer sur le bouton "DELETE". Récupère la valeur de "id_genre"
     id_pseudo_delete = request.values['id_pseudo_btn_delete_html']
@@ -283,8 +283,8 @@ def pseudo_delete_wtf():
             if form_delete.submit_btn_conf_del.data:
                 # Récupère les données afin d'afficher à nouveau
                 # le formulaire "genres/pseudo_delete_wtf.html" lorsque le bouton "Etes-vous sur d'effacer ?" est cliqué.
-                data_pseudo_avoir_personne_delete = session['data_pseudo_avoir_personne_delete']
-                print("data_pseudo_avoir_personne_delete ", data_pseudo_avoir_personne_delete)
+                #data_pseudo_avoir_personne_delete = session['data_pseudo_avoir_personne_delete']
+                #print("data_pseudo_avoir_personne_delete ", data_pseudo_avoir_personne_delete)
 
                 flash(f"Effacer le pseudo de façon définitive de la BD !!!", "danger")
                 # L'utilisateur vient de cliquer sur le bouton de confirmation pour effacer...
@@ -295,12 +295,12 @@ def pseudo_delete_wtf():
                 valeur_delete_dictionnaire = {"value_id_pseudo": id_pseudo_delete}
                 print("valeur_delete_dictionnaire ", valeur_delete_dictionnaire)
 
-                str_sql_delete_avoir_pseudo = """DELETE FROM t_avoir_pseudo WHERE fk_pseudo = %(value_id_pseudo)s"""
+                #str_sql_delete_avoir_pseudo = """DELETE FROM t_avoir_pseudo WHERE fk_pseudo = %(value_id_pseudo)s"""
                 str_sql_delete_idpseudo = """DELETE FROM t_pseudo WHERE id_pseudo = %(value_id_pseudo)s"""
                 # Manière brutale d'effacer d'abord la "fk_genre", même si elle n'existe pas dans la "t_genre_film"
                 # Ensuite on peut effacer le genre vu qu'il n'est plus "lié" (INNODB) dans la "t_genre_film"
                 with MaBaseDeDonnee() as mconn_bd:
-                    mconn_bd.mabd_execute(str_sql_delete_avoir_pseudo, valeur_delete_dictionnaire)
+                    #mconn_bd.mabd_execute(str_sql_delete_avoir_pseudo, valeur_delete_dictionnaire)
                     mconn_bd.mabd_execute(str_sql_delete_idpseudo, valeur_delete_dictionnaire)
 
                 flash(f"Pseudo définitivement effacé !!", "success")
@@ -314,20 +314,20 @@ def pseudo_delete_wtf():
             print(id_pseudo_delete, type(id_pseudo_delete))
 
             # Requête qui affiche tous les films qui ont le genre que l'utilisateur veut effacer
-            str_sql_avoir_pseudo_delete = """SELECT id_avoir_pseudo, pseudo, id_personne, pers_nom, pers_prenom, pers_dateDeNaissance FROM t_avoir_pseudo 
-                                            INNER JOIN t_pseudo ON t_avoir_pseudo.fk_pseudo = t_pseudo.id_pseudo
-                                            INNER JOIN t_personne ON t_avoir_pseudo.fk_personne = t_personne.id_personne
-                                            WHERE fk_pseudo = %(value_id_pseudo)s"""
+            #str_sql_avoir_pseudo_delete = """SELECT id_avoir_pseudo, pseudo, id_personne, pers_nom, pers_prenom, pers_dateDeNaissance FROM t_avoir_pseudo
+                                            #INNER JOIN t_pseudo ON t_avoir_pseudo.fk_pseudo = t_pseudo.id_pseudo
+                                            #INNER JOIN t_personne ON t_avoir_pseudo.fk_personne = t_personne.id_personne
+                                            #WHERE fk_pseudo = %(value_id_pseudo)s"""
 
             mybd_curseur = MaBaseDeDonnee().connexion_bd.cursor()
 
-            mybd_curseur.execute(str_sql_avoir_pseudo_delete, valeur_select_dictionnaire)
-            data_pseudo_avoir_personne_delete = mybd_curseur.fetchall()
-            print("data_pseudo_avoir_personne_delete...", data_pseudo_avoir_personne_delete)
+            #mybd_curseur.execute(str_sql_avoir_pseudo_delete, valeur_select_dictionnaire)
+            #data_pseudo_avoir_personne_delete = mybd_curseur.fetchall()
+            #print("data_pseudo_avoir_personne_delete...", data_pseudo_avoir_personne_delete)
 
             # Nécessaire pour mémoriser les données afin d'afficher à nouveau
             # le formulaire "genres/pseudo_delete_wtf.html" lorsque le bouton "Etes-vous sur d'effacer ?" est cliqué.
-            session['data_pseudo_avoir_personne_delete'] = data_pseudo_avoir_personne_delete
+            #session['data_pseudo_avoir_personne_delete'] = data_pseudo_avoir_personne_delete
 
             # Opération sur la BD pour récupérer "id_genre" et "intitule_genre" de la "t_genre"
             str_sql_id_pseudo = "SELECT id_pseudo, pseudo FROM t_pseudo WHERE id_pseudo = %(value_id_pseudo)s"
@@ -366,7 +366,10 @@ def pseudo_delete_wtf():
         flash(f"__KeyError dans pseudo_delete_wtf : {sys.exc_info()[0]} {sys.exc_info()[1]} {sys.exc_info()[2]}",
               "danger")
 
+    #return render_template("pseudo/pseudo_delete_wtf.html",
+                           #form_delete=form_delete,
+                           #btn_submit_del=btn_submit_del,
+                           #data_personne_associes=data_pseudo_avoir_personne_delete)
     return render_template("pseudo/pseudo_delete_wtf.html",
-                           form_delete=form_delete,
-                           btn_submit_del=btn_submit_del,
-                           data_personne_associes=data_pseudo_avoir_personne_delete)
+                               form_delete=form_delete,
+                               btn_submit_del=btn_submit_del)
