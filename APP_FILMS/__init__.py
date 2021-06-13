@@ -81,8 +81,9 @@ except Exception as error_app:
 from APP_FILMS.database import database_tools
 from APP_FILMS.essais_wtf_forms import gestion_essai_wtf
 from APP_FILMS.essais_wtf_forms import gestion_wtf_forms_demo_select
-from APP_FILMS.genres import gestion_genres_crud
 from APP_FILMS.personne import gestion_personne_crud
 from APP_FILMS.pseudo import gestion_pseudo_crud
+from APP_FILMS.genre import gestion_genre_crud
+from APP_FILMS.scan import gestion_scan_crud
 from APP_FILMS.account import gestion_account
 from APP_FILMS.zzzdemos import routes_demos

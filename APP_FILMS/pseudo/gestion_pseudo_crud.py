@@ -1,7 +1,7 @@
 """
     Fichier : gestion_genres_crud.py
     Auteur : OM 2021.03.16
-    Gestions des "routes" FLASK et des données pour les genres.
+    Gestions des "routes" FLASK et des données pour les oldgenres.
 """
 import sys
 
@@ -28,7 +28,7 @@ from APP_FILMS.pseudo.gestion_pseudo_wtf_forms import FormWTFDeletePseudo
     Test : ex : http://127.0.0.1:5005/genres_afficher
     
     Paramètres : order_by : ASC : Ascendant, DESC : Descendant
-                id_genre_sel = 0 >> tous les genres.
+                id_genre_sel = 0 >> tous les oldgenres.
                 id_genre_sel = "n" affiche le genre dont l'id est "n"
 """
 
@@ -102,7 +102,7 @@ def pseudo_afficher(order_by, id_pseudo_sel):
     
     But : Ajouter un genre pour un film
     
-    Remarque :  Dans le champ "name_genre_html" du formulaire "genres/genres_ajouter.html",
+    Remarque :  Dans le champ "name_genre_html" du formulaire "oldgenres/genres_ajouter.html",
                 le contrôle de la saisie s'effectue ici en Python.
                 On transforme la saisie en minuscules.
                 On ne doit pas accepter des valeurs vides, des valeurs avec des chiffres,
@@ -158,7 +158,7 @@ def pseudo_ajouter_wtf():
             code, msg = erreur_gest_pseudo_crud.args
 
             flash(f"{error_codes.get(code, msg)} ", "danger")
-            flash(f"Erreur dans Gestion genres CRUD : {sys.exc_info()[0]} "
+            flash(f"Erreur dans Gestion oldgenres CRUD : {sys.exc_info()[0]} "
                   f"{erreur_gest_pseudo_crud.args[0]} , "
                   f"{erreur_gest_pseudo_crud}", "danger")
 
@@ -169,13 +169,13 @@ def pseudo_ajouter_wtf():
     Auteur : OM 2021.03.29
     Définition d'une "route" /genre_update
     
-    Test : ex cliquer sur le menu "genres" puis cliquer sur le bouton "EDIT" d'un "genre"
+    Test : ex cliquer sur le menu "oldgenres" puis cliquer sur le bouton "EDIT" d'un "genre"
     
     Paramètres : sans
     
     But : Editer(update) un genre qui a été sélectionné dans le formulaire "genres_afficher.html"
     
-    Remarque :  Dans le champ "nom_genre_update_wtf" du formulaire "genres/genre_update_wtf.html",
+    Remarque :  Dans le champ "nom_genre_update_wtf" du formulaire "oldgenres/genre_update_wtf.html",
                 le contrôle de la saisie s'effectue ici en Python.
                 On transforme la saisie en minuscules.
                 On ne doit pas accepter des valeurs vides, des valeurs avec des chiffres,
@@ -253,13 +253,13 @@ def pseudo_update_wtf():
     Auteur : OM 2021.04.08
     Définition d'une "route" /genre_delete
     
-    Test : ex. cliquer sur le menu "genres" puis cliquer sur le bouton "DELETE" d'un "genre"
+    Test : ex. cliquer sur le menu "oldgenres" puis cliquer sur le bouton "DELETE" d'un "genre"
     
     Paramètres : sans
     
     But : Effacer(delete) un genre qui a été sélectionné dans le formulaire "genres_afficher.html"
     
-    Remarque :  Dans le champ "nom_pseudo_delete_wtf" du formulaire "genres/pseudo_delete_wtf.html",
+    Remarque :  Dans le champ "nom_pseudo_delete_wtf" du formulaire "oldgenres/pseudo_delete_wtf.html",
                 le contrôle de la saisie est désactivée. On doit simplement cliquer sur "DELETE"
 """
 
@@ -282,7 +282,7 @@ def pseudo_delete_wtf():
 
             if form_delete.submit_btn_conf_del.data:
                 # Récupère les données afin d'afficher à nouveau
-                # le formulaire "genres/pseudo_delete_wtf.html" lorsque le bouton "Etes-vous sur d'effacer ?" est cliqué.
+                # le formulaire "oldgenres/pseudo_delete_wtf.html" lorsque le bouton "Etes-vous sur d'effacer ?" est cliqué.
                 #data_pseudo_avoir_personne_delete = session['data_pseudo_avoir_personne_delete']
                 #print("data_pseudo_avoir_personne_delete ", data_pseudo_avoir_personne_delete)
 
@@ -326,7 +326,7 @@ def pseudo_delete_wtf():
             #print("data_pseudo_avoir_personne_delete...", data_pseudo_avoir_personne_delete)
 
             # Nécessaire pour mémoriser les données afin d'afficher à nouveau
-            # le formulaire "genres/pseudo_delete_wtf.html" lorsque le bouton "Etes-vous sur d'effacer ?" est cliqué.
+            # le formulaire "oldgenres/pseudo_delete_wtf.html" lorsque le bouton "Etes-vous sur d'effacer ?" est cliqué.
             #session['data_pseudo_avoir_personne_delete'] = data_pseudo_avoir_personne_delete
 
             # Opération sur la BD pour récupérer "id_genre" et "intitule_genre" de la "t_genre"

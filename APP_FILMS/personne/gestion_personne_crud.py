@@ -102,7 +102,7 @@ def personne_afficher(order_by, id_personne_sel):
 
     But : Ajouter un genre pour un film
 
-    Remarque :  Dans le champ "name_genre_html" du formulaire "genres/genres_ajouter.html",
+    Remarque :  Dans le champ "name_genre_html" du formulaire "oldgenres/genres_ajouter.html",
                 le contrôle de la saisie s'effectue ici en Python.
                 On transforme la saisie en minuscules.
                 On ne doit pas accepter des valeurs vides, des valeurs avec des chiffres,
@@ -175,13 +175,13 @@ def personne_ajouter_wtf():
     Auteur : OM 2021.03.29
     Définition d'une "route" /personne_update
 
-    Test : ex cliquer sur le menu "genres" puis cliquer sur le bouton "EDIT" d'un "genre"
+    Test : ex cliquer sur le menu "oldgenres" puis cliquer sur le bouton "EDIT" d'un "genre"
 
     Paramètres : sans
 
     But : Editer(update) un genre qui a été sélectionné dans le formulaire "genres_afficher.html"
 
-    Remarque :  Dans le champ "nom_genre_update_wtf" du formulaire "genres/genre_update_wtf.html",
+    Remarque :  Dans le champ "nom_genre_update_wtf" du formulaire "oldgenres/genre_update_wtf.html",
                 le contrôle de la saisie s'effectue ici en Python.
                 On transforme la saisie en minuscules.
                 On ne doit pas accepter des valeurs vides, des valeurs avec des chiffres,
@@ -269,13 +269,13 @@ def personne_update_wtf():
     Auteur : OM 2021.04.08
     Définition d'une "route" /genre_delete
 
-    Test : ex. cliquer sur le menu "genres" puis cliquer sur le bouton "DELETE" d'un "genre"
+    Test : ex. cliquer sur le menu "oldgenres" puis cliquer sur le bouton "DELETE" d'un "genre"
 
     Paramètres : sans
 
     But : Effacer(delete) un genre qui a été sélectionné dans le formulaire "genres_afficher.html"
 
-    Remarque :  Dans le champ "nom_genre_delete_wtf" du formulaire "genres/genre_delete_wtf.html",
+    Remarque :  Dans le champ "nom_genre_delete_wtf" du formulaire "oldgenres/genre_delete_wtf.html",
                 le contrôle de la saisie est désactivée. On doit simplement cliquer sur "DELETE"
 """
 
@@ -342,7 +342,7 @@ def personne_delete_wtf():
             #print("data_personne_avoir_pseudo_delete...", data_personne_avoir_pseudo_delete)
 
             # Nécessaire pour mémoriser les données afin d'afficher à nouveau
-            # le formulaire "genres/genre_delete_wtf.html" lorsque le bouton "Etes-vous sur d'effacer ?" est cliqué.
+            # le formulaire "oldgenres/genre_delete_wtf.html" lorsque le bouton "Etes-vous sur d'effacer ?" est cliqué.
             #session['data_personne_avoir_pseudo_delete'] = data_personne_avoir_pseudo_delete
 
             # Opération sur la BD pour récupérer "id_genre" et "intitule_genre" de la "t_genre"
